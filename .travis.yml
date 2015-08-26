@@ -1,0 +1,11 @@
+language: python
+python:
+ - "2.7"
+before_script:
+ - sleep 15
+install: "pip install -r testing_requirements.txt && pip install -r requirements.txt"
+script:
+ - find . -name "*.py" -exec pep8 {} \;
+ - nosetests --with-coverage --cover-package=metahosting
+ - radon mi metahosting
+ - radon cc metahosting
