@@ -34,13 +34,14 @@ def logging_setup(arguments):
                                                       version=1))
 
 
-def get_uuid(filename):
+def get_uuid(filename=None):
     try:
         filehandler = open(filename, 'r')
         content = (filehandler.read()).rstrip()
         return str(uuid.UUID(content))
     except IOError:
-        logging.error('Not able to read file: %s ', filename)
+        if filename:
+            logging.error('Not able to read file: %s ', filename)
     except ValueError:
         logging.error('Not able to validate uuid: %s ', content)
     except KeyError:

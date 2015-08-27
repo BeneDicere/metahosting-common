@@ -1,5 +1,6 @@
 from copy import copy
 
+from metahosting.common import get_uuid
 from metahosting.common.persistence import AbstractKVStore
 
 
@@ -10,6 +11,9 @@ class Store(AbstractKVStore):
 
     def update(self, name, value):
         self.collection[name] = copy(value)
+
+    def insert(self, value):
+        self.collection[get_uuid()] = copy(value)
 
     def get(self, name):
         if name not in self.collection:

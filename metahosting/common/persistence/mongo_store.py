@@ -1,3 +1,4 @@
+from datetime import datetime
 from pymongo import MongoClient
 from retrying import retry
 
@@ -19,6 +20,11 @@ class MongoStore(AbstractKVStore):
             self.get_property('database')][self.get_property('collection')]
 
     def update(self, name, value):
-        self.collection.update(spec={'name': name},
-                               document={'name': name, 'value': value},
-                               upsert=True)
+        self.collection.replace_one(filter={'name': name},
+                                    replacement={'name': name, 'value': value},
+                                    upsert=True)
+
+    def insert(self, value):
+        if 'ts' not in value.keys():
+            value['ts'] = datetime.now()
+        self.collection.insert_one(document=value)
