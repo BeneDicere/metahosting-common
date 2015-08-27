@@ -29,4 +29,3 @@ class Store(AbstractKVStore):
 
     def initialize_collection(self):
         return dict()
-

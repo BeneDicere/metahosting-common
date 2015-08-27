@@ -37,7 +37,6 @@ class AbstractKVStore(object):
         for k, v in settings.iteritems():
             self.set_property(k, v)
 
-
     def set_property(self, key, value):
         self.settings[key] = value
 

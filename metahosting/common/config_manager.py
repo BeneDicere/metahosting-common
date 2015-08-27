@@ -59,6 +59,7 @@ def get_backend_class(config, key='backend'):
     class_str = class_data[-1]
     return getattr(module, class_str)
 
+
 def get_instance_configuration(section_name, config_file=None,
                                variables_file=None):
     properties = get_configuration(section_name=section_name,

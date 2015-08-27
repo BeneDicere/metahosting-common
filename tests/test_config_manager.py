@@ -1,9 +1,11 @@
 import ConfigParser
 import os
 import unittest
-from metahosting.common.config_manager import get_configuration, get_backend_class
+
 from tempfile import NamedTemporaryFile
 
+from metahosting.common.config_manager \
+    import get_configuration, get_backend_class
 
 class Backend:
     def __init__(self):

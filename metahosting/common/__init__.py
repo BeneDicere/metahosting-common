@@ -45,5 +45,5 @@ def get_uuid(filename=None):
     except ValueError:
         logging.error('Not able to validate uuid: %s ', content)
     except KeyError:
-        logging.error('No path for uuid file in conf' )
+        logging.error('No path for uuid file in conf')
     return str(uuid.uuid4())
