@@ -8,7 +8,7 @@ class MongoStore(AbstractKVStore):
     def initialize_collection(self):
         url = 'mongodb://{}:{}/{}'.format(
             self.get_property('host'),
-            self.get_property('port'),
+            int(self.get_property('port')),
             self.get_property('database'))
         return self._initialize_connection(url)
 
